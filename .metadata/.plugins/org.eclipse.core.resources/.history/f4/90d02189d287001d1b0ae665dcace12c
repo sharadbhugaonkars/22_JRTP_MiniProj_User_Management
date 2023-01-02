@@ -1,0 +1,15 @@
+package com.example.demo.repo;
+
+import java.util.Map;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.example.demo.entity.State;
+
+public interface StateRepository extends JpaRepository<State, Integer> {
+	
+	@Query("Select stateId,stateNames from State as s where s.countryId =: countryId")
+	public Map<Integer,String> getStates(Integer countryId);
+
+}

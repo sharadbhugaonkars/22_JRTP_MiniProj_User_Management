@@ -1,0 +1,29 @@
+package com.example.demo.service;
+
+import java.util.Map;
+
+import com.example.demo.entity.User;
+
+public interface IUserService {
+	
+	public String UserByEmailAndPassword(User user);
+	
+	public Map<Integer,String> getCountries();
+	
+	public Map<Integer,String> getStates(Integer countryId);
+	
+	public Map<Integer,String> getCities(Integer stateId);
+	
+	public String registerUser(User user);
+	
+	public String unlockAccount(UnlockAccForm accForm);
+	
+	public String login(LoginForm loginForm);
+	
+	public String forgotPwd(String email);
+	
+	
+	
+	
+
+}

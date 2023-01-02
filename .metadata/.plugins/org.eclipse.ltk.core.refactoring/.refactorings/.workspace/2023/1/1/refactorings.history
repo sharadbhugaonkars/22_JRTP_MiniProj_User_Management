@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;SpringBootRestRedisCacheEx&apos;" deleteContents="false" description="Delete resource &apos;SpringBootRestRedisCacheEx&apos;" element1="/SpringBootRestRedisCacheEx" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1672590941525"/>&#x0A;<refactoring comment="Delete resource &apos;SpringBootRestLoginApi&apos;" deleteContents="false" description="Delete resource &apos;SpringBootRestLoginApi&apos;" element1="/SpringBootRestLoginApi" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1672590980575"/>
+</session>

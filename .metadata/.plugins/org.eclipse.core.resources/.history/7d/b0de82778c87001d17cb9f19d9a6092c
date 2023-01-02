@@ -1,0 +1,16 @@
+package com.example.demo.repo;
+
+import java.util.Map;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.example.demo.entity.City;
+
+public interface CityRepository extends JpaRepository<City, Integer> {
+	
+	
+	@Query("Select cityId,cityNames from  CITY_MASTER as c where c.cityId=c.stateId")
+	public Map<Integer,String> getCities(Integer cityId);
+
+}

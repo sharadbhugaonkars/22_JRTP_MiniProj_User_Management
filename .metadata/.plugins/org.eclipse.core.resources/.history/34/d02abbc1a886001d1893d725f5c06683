@@ -1,0 +1,13 @@
+package com.example.demo.service;
+
+import com.example.demo.entity.User;
+
+public interface IUserService {
+	
+	
+	
+	public String UserByEmailAndPassword(User user);
+	
+	public String registerUser(User user);
+
+}

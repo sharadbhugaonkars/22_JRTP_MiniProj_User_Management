@@ -1,0 +1,35 @@
+package com.example.demo.service;
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.example.demo.entity.User;
+
+public interface IUserService {
+	
+	public String checkEmail(User user);
+	
+	public ArrayList<Integer,Integer,String> getCountrieses();
+	
+	public List<Map<Integer,String>> getStateses(Integer countryId);
+	
+	public List<Map<Integer,String>> getCitieses(Integer stateId);
+	
+	public String registerUser(User user);
+	
+	//public String unlockAccount(UnlockAccForm accForm);
+	
+	//public String login(LoginForm loginForm);
+	
+	//public String forgotPwd(String email);
+	
+	
+	
+	
+
+}
