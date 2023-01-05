@@ -8,13 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.LoginForm;
-import com.example.demo.entity.UnLockAccForm;
-import com.example.demo.entity.User;
+import com.example.demo.binding.LoginForm;
+import com.example.demo.binding.UnLockAccountForm;
+import com.example.demo.binding.UserForm;
+import com.example.demo.entity.City;
+import com.example.demo.entity.Country;
+import com.example.demo.entity.State;
 import com.example.demo.service.IUserService;
 
 @RestController
@@ -23,10 +25,10 @@ public class UserRestController {
 	@Autowired
 	private IUserService service;
 
-	@PostMapping("/checkuser")
-	public ResponseEntity<String> authenticateUser(@RequestBody User user) {
+	@GetMapping("/checkuser/{email}")
+	public ResponseEntity<String> authenticateUser(@PathVariable String email) {
 
-		String s = service.checkEmail(user);
+		String s = service.checkEmail(email);
 		return new ResponseEntity<>(s, HttpStatus.OK);
 	}
 
@@ -55,38 +57,64 @@ public class UserRestController {
 	}
 
 	@PostMapping("/registeruser")
-	public ResponseEntity<String> registerUser(@RequestBody User user) {
+	public ResponseEntity<String> registerUser(@RequestBody UserForm userform) {
 
-		String s = service.registerUser(user);
+		String status= service.registerUser(userform);
 
-		return new ResponseEntity<>(s, HttpStatus.OK);
-
-	}
-
-	@PutMapping("/modifypwd")
-	public ResponseEntity<String> updatePwd(@RequestBody UnLockAccForm accForm,User user) {
-		
-
-		String s = service.unlockAccount(accForm,user);
-		
-		return new ResponseEntity<>(s, HttpStatus.OK);
+		return new ResponseEntity<>(status, HttpStatus.CREATED);
 
 	}
 
-	@PutMapping("/login")
-	public ResponseEntity<String>  login(@RequestBody LoginForm login) {
+	@PostMapping("/unlock")
+	public ResponseEntity<String> unlockAccount(@RequestBody UnLockAccountForm unlockAccForm) {
 		
-		String s =	service.login(login);
+
+		String status = service.unlockAccount(unlockAccForm);
 		
-		return new ResponseEntity<>(s, HttpStatus.OK);
+		return new ResponseEntity<>(status, HttpStatus.OK);
+
 	}
-	@PutMapping("/forgotpwd")
-	public ResponseEntity<String>  forgotPwd(@RequestBody String email,User user){
+
+	@PostMapping("/login")
+	public ResponseEntity<String>  login(@RequestBody LoginForm loginForm) {
 		
-            String s =	service.forgotPwd(email,user);
+		String status =	service.login(loginForm);
 		
-		     return new ResponseEntity<>(s, HttpStatus.OK);
+		return new ResponseEntity<>(status, HttpStatus.OK);
+	}
+	@GetMapping("/forgotpwd/{email}")
+	public ResponseEntity<String>  forgotPwd(@PathVariable String email){
 		
+            String status =	service.forgotPwd(email);
+		
+		     return new ResponseEntity<>(status, HttpStatus.OK);
+		
+	}
+	@PostMapping("/insertcountry")
+	public ResponseEntity<String> insertcountry(@RequestBody Country country) {
+
+		String status= service.insertcountry(country);
+
+		return new ResponseEntity<>(status, HttpStatus.CREATED);
+
+	}
+	
+	@PostMapping("/insertstate")
+	public ResponseEntity<String> insertcountry(@RequestBody State state) {
+
+		String status= service.insertstate(state);
+
+		return new ResponseEntity<>(status, HttpStatus.CREATED);
+
+	}
+	
+	@PostMapping("/insertcity")
+	public ResponseEntity<String> insertcountry(@RequestBody City city) {
+
+		String status= service.insertcity(city);
+
+		return new ResponseEntity<>(status, HttpStatus.CREATED);
+
 	}
 }
 
